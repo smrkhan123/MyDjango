@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<form method="POST">
+	{% csrf_token %}
+	<label>Title:</label>
+	<input type="text" name="t" value="{{data.title}}">
+	<br>
+	<label>Body:</label>
+	<textarea name="b">{{data.body}}</textarea>
+	<br>
+	<label>Author:</label>
+	<input type="text" name="a" value="{{data.author}}">
+	<br>
+	<input type="submit">
+</form>
+</body>
+</html>

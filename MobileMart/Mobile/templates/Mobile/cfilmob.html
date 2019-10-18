@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load bootstrap3 %}
+
+	<section id="sec1" class="container-fluid" style="background-image: url('/static/b1.jpg');background-size:cover;height: 100vh;box-shadow:0px 10px 20px black;">
+
+		<div class="jumbotron" style="position: relative;top: 100px;min-height:73vh;background-color: rgba(0,0,0,0.4);border:2px solid white;color: white;" data-aos="flip-up">
+				{% if messages %}
+			{% for i in messages %}
+				<div class="alert alert-success">{{i}}</div>
+			{% endfor %}
+		{% endif %}
+			<form action="{% url 'cfilmob' %}" method="POST" >
+				{% csrf_token %}
+				<div class="form-group" class="col-lg-5">
+					<label>Mobile : </label>
+					<input type="text" name="mob" class="form-control" placeholder="Filter Mobile..">
+				</div>
+				<div class="form-group" class="col-lg-5">
+					<label>Model : </label>
+					<input type="text" name="mod" class="form-control" placeholder="Filter Model..">
+				</div>
+				<div class="form-group" class="col-lg-5">
+					<label>From : </label>
+					<input type="text" name="from" class="form-control" placeholder="Enter Range From..">
+				</div>
+				<div class="form-group" class="col-lg-5">
+					<label>To : </label>
+					<input type="text" name="to" class="form-control" placeholder="Enter Range To..">
+				</div>
+				<div class="form-group" class="col-lg-5">
+				<input type="submit" class="btn btn-info" value="Filter">
+			</div>
+			</form>
+{% load mathfilters %}		
+{% for i in data %}
+
+			<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+
+<div class="mcontainer" style="background-image: url('{{i.9}}')">
+<div class="moverlay">
+<div class="mitems"></div>
+<div class="mitems mhead">
+<p>{{i.0}}</p>
+<p>{{i.1}}</p>
+<hr>
+</div>
+<div class="mitems mprice">
+<p class="mold">{{i.2|floatformat:"0"|addition:2000}} Rs.</p>
+<p class="mnew">{{i.2}} Rs.</p>
+</div>
+<div class="mitems mcart">
+<i class="fa fa-shopping-cart"></i>
+<span><a href="{% url 'addcart' id=i.10 %}" id="ccc">ADD TO CART</a></span>
+<span><a href="{% url 'mobdet' id=i.10 %}" id="ccc">DETAILS</a></span>
+</div>
+</div>
+</div>
+</div>
+{% endfor %}
+			<table class="table">
+				<tr>
+					<th>Mobile</th>
+					<th>Model</th>
+					<th>Price</th>
+					<th>Quantity</th>
+					<th>Charger</th>
+					<th>Battery</th>
+					<th>Headset</th>
+					<th>Memory</th>
+					<th>Datacable</th>
+					<th>Description</th>
+					<th>More</th>
+				</tr>
+				{% for i in data %}
+				<tr>
+					<td>{{i.0}}</td>
+					<td>{{i.1}}</td>
+					<td>{{i.2}}</td>
+					<td>{{i.3}}</td>
+					<td>{{i.4}}</td>
+					<td>{{i.5}}</td>
+					<td>{{i.6}}</td>
+					<td>{{i.7}}</td>
+					<td>{{i.8}}</td>
+					<td>{{i.10}}</td>
+					<td><a href="{% url 'mobdet' id=i.10 %}" class="btn btn-primary">More</a></td>
+					
+				</tr>	
+				{% endfor %}
+			</table>
+		</div>
+
+	</section>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load bootstrap3 %}
+
+	<section id="sec1" class="container-fluid" style="background-image: url('/static/d.jpg');background-size:cover;height: 100vh;box-shadow:0px 10px 20px black;">
+		
+		<div class="jumbotron" style="position: relative;top: 100px;min-height:73vh;background-color: rgba(0,0,0,0.4);border:2px solid white;color: white;" data-aos="flip-up">
+			<table class="table">
+				<tr>
+					<th>Username</th>
+					<th>Firstname</th>
+					<th>Lastname</th>
+					<th>Email</th>
+					<th>Mobile</th>
+					<th>Aadhar</th>
+					<th>Address</th>
+					<th>More</th>
+				</tr>
+				{% for i in data %}
+				<tr>
+					<td>{{i.0}}</td>
+					<td>{{i.1}}</td>
+					<td>{{i.2}}</td>
+					<td>{{i.3}}</td>
+					<td>{{i.4}}</td>
+					<td>{{i.5}}</td>
+					<td>{{i.6}}</td>
+					<td><a class="btn btn-info" href="{% url 'cusdetail' u=i.0 %}">More</a></td>
+				</tr>	
+				{% endfor %}
+			</table>
+		</div>
+
+	</section>
+{% endblock %}

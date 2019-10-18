@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		body{
+			background-color: orange;
+		}
+		h1{
+			background-color: white;
+		}
+		p{
+			color:white;
+		}
+
+	</style>
+</head>
+<body>
+	<p>ID: {{data.id}}</p>
+	<p>Title: {{data.title}}</p>
+	<p>Posted By: {{data.author}}</p>
+	<p>Body: {{data.body}}</p>
+	<p>Date: {{data.adate}}</p>
+	<a href="{% url 'artdelete' pk=data.id %}">Delete</a>
+	<a href="{% url 'artupdate' pk=data.id %}">Update</a>
+	
+</body>
+</html>

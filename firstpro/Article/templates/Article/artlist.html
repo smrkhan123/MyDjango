@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		body{
+			background-image:url("{% static 'd.jpg' %}");
+		}
+		h1{
+			background-color: white;
+		}
+		a{
+			color:black;
+		}
+
+	</style>
+</head>
+<body>
+	{% for i in data %}
+	<center>
+	<h1><a href="{% url 'artdetail' pk=i.id %}">{{i.title}}</a></h1>
+	</center>
+	{% endfor %}
+	<h2><a style="color: white" href="{% url 'artcreate' %}">Create Post</a></h2>
+
+</body>
+</html>

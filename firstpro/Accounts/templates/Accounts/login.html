@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style type="text/css">
+	body{
+		margin: 0;
+		padding: 0;
+		font-family:century gothic;
+	}
+	a{
+		color:white;
+	}
+	span{
+		background-color: white;
+	}
+	#abc{
+		font-size: 25px;
+	}
+	#abc:hover{
+		color:white;
+		background-color: black;
+	}
+	#a:active{
+		background-color: black;
+	}
+	#main{
+		width:100%;
+		padding-bottom:220px;
+		background-image:url(/static/d.jpg);
+	}
+	#jum{
+		position: relative;
+		top:150px;
+		background-color: rgba(0,0,0,0); 
+		color:white; 
+	}
+	</style>
+</head>
+<body>
+<div class="container-fluid" id="main">
+	
+	<div class="container jumbotron" id="jum" data-aos="fade-up">
+		<div class="col-md-5 col-lg-5 col-sm-5">
+			<div style="background-color:black; opacity: 0.6">
+				<h2 style="margin-bottom: 20px; text-align: center; font-size: 16px; padding: 30px 30px 50px 30px">
+					You can login using various Social Media Platforms
+					<br><br><br>
+					<button style="background-color: blue; padding: 10px 50px;" class="btn"><i class="fa fa-facebook" style="margin-right: 8px;"></i> Login With Facebook</button>
+					<br><br><br>
+					<button style="background-color: dodgerblue; padding: 10px 60px;" class="btn"><i class="fa fa-twitter" style="margin-right: 8px;"></i> Login With Twiiter</button>
+					<br><br><br>
+					<button style="background-color: red; padding: 10px 55px;" class="btn"><i class="fa fa-google" style="margin-right: 8px;"></i> Login With Google</button>
+				</h2>
+
+			</div>
+		</div>
+		<div class="col-md-2 col-lg-2 col-sm-2"></div>
+		<div class="col-md-5 col-lg-5 col-sm-5">
+			<h2 style="margin-bottom: 20px;">Login Here</h2>
+			<form action="">
+				<div class="form-group" style="margin-bottom: 20px;">
+					<label for=username>Username: </label>
+					<input type="text" class="form-control" name="">
+				</div>
+				<div class="form-group" style="margin-bottom: 20px;">
+					<label for=pwd>Password: </label>
+					<input type="password" class="form-control" name="">
+				</div>
+				<h5 style="color:yellow">Forget Password? <a href="{% url 'signup' %}"> Click Here</a></h5>
+				<div class="form-group" style="margin-top: 20px;">
+					<input type="submit" class="btn btn-primary" name="login" value="Login" style="padding:5px 30px;">
+				</div>
+				<h5 style="color:yellow">Do not an account? <a href="{% url 'signup' %}"> Click Here</a></h5>
+			</form>
+		</div>
+	</div>
+
+</div>
+
+<script>
+  AOS.init({
+  	duration:2000,
+  });
+</script>
+
+
+
+
+
+</body>
+</html>

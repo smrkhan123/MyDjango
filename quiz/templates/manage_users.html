@@ -1,0 +1,64 @@
+{% extends 'menu.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+  
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+  <link rel="stylesheet"  href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+  <link rel="stylesheet"  href="https://code.jquery.com/jquery-3.3.1.js">
+  <link rel="stylesheet"  href="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js">
+  <style>
+   a{
+    color:white !important;
+   }
+ </style>
+
+<div class="container">
+<h1 style="text-align: center;">Manage Users</h1>
+<table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>User Type</th>
+                <th>Action</th>
+            </tr>
+            <tbody>
+            	{% for i in users %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{i.first_name}}</td>
+                    <td>{{i.last_name}}</td>
+                    <td>{{i.username}}</td>
+                    <td>{{i.email}}</td>
+                    <td>
+                    {% if i.is_superuser %}
+                    	<b>Super User</b>
+                    {% else %}
+                    	Normal User
+                    {% endif %}
+                    </td>
+                    <td><a href="{% url 'edit_user' i.id %}" style="color: dodgerblue !important"><button class="btn btn-info">Edit</button></a>
+                    	<a href="{% url 'delete_user' i.id %}" style="color: dodgerblue !important"><button class="btn btn-info">Delete</button></a>
+                    </td>
+                </tr>
+            {% endfor %}
+
+        </tbody>
+        </thead>
+    </table>
+  </div>
+<script >
+$(document).ready(function() {
+    $('#example').DataTable();
+} );
+</script>
+</div>
+{% endblock %}

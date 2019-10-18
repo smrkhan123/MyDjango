@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<center>
+<div style="background-color: grey; padding: 50px;">
+	<h1>Login Form</h1>
+	<form action="" method="POST">
+		{% csrf_token %}
+		{% for message in messages %}
+		<span>{{message}}</span>
+		{% endfor %}
+		
+		<table>
+		<tr>
+			<td style="padding: 10px 0px;">username: </td>
+			<td><input type="text" name="email"></td>
+		</tr>
+			<td style="padding: 10px 0px;">Password: </td>
+			<td> <input type="password" name="pass"></td>
+		</tr>
+		</table>
+		<br>
+		<input type="submit" name="login"><br><br>
+
+		Don't have any Account? <a href="{% url 'register' %}">Register</a>
+	</form>
+</div>
+</center>	
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<form method="POST" enctype="multipart/form-data">
+	{% csrf_token %}
+	Name: <input type="text" name="name"><br><br>
+	Image: <input type="file" name="image"><br><br>
+	Desc: <input type="text" name="desc"><br><br>
+	Price: <input type="text" name="price"><br><br>
+	Offer: <input type="checkbox" name="offer"><br><br>
+	<input type="submit">
+</form>
+</body>
+</html>

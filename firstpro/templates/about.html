@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Demo</title>
+	<style type="text/css">
+	body{
+		background-color:black;
+		color:white;
+	}
+
+	</style>
+</head>
+<body>
+<div>
+	<h1>Hello I am About...</h1>
+	<a href="{% url 'home' %}">Home</a>
+	<h1>{{key}}</h1>
+	{% for i in data %}
+	<h1>{{i}}</h1>
+	{% endfor %}
+</div>
+</body>
+</html>

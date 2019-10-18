@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+	<style type="text/css">
+	body{
+		margin: 0;
+		padding: 0;
+		font-family:century gothic;
+		color:white;
+	}
+	#main{
+		background-image: url({% static 'images/a.jpg' %});
+		background-size:100% 100%;
+	}
+	#jumb{
+		position:relative;
+		background-color: rgba(0,0,0,0);
+		color:white;
+	}
+	a{
+		color:white;
+	}
+	#abc{
+		background-color: rgba(0,0,0,0.1);
+		padding: 60px 50px 100px 50px;
+		border-radius: 30px;
+	}
+	</style>
+
+<body>
+<div class="container-fluid" id='main'>
+	<div class="container jumbotron" id='jumb' data-aos="fade-up">
+		<div class="col-md-3 col-lg-3 col-sm-1">
+		</div>
+		<div class="col-md-6 col-lg-6 col-sm-10" id='abc'>
+			<h2>Account Login</h2>
+			<form action="{% url 'login' %}" method="POST">
+				{% csrf_token %}
+				{% for message in messages %}
+				<div class="alert alert-{{ message.tags }} alert-dismissible" role="alert" style="background-color:red !important; color:white;">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					{{ message }}
+				</div>
+				{% endfor %}
+				{% csrf_token %}
+				<div class="form-group" style="padding: 5px 0px;">
+					<label for='username'>Username:</label>
+					<input type="text" class='form-control' name="username">
+				</div>
+				<div class="form-group" style="padding: 5px 0px;">
+					<label for='password'>Password:</label>
+					<input type="password" class='form-control' name="password">
+				</div>
+				<h5 style="color:dodgerblue">Forget Password? <a href="#"> Click Here</a></h5>
+				<div class="form-group" style="padding: 10px 0px;">
+					<input type="submit" class="btn btn-primary" name="login" value="Login" style="padding: 5px 30px;">
+				</div>
+				<h5 style="color:dodgerblue">Do not an account? <a href="{% url 'register' %}"> Click Here</a></h5>
+			</form>
+		</div>
+		<div class="col-md-3 col-lg-3 col-sm-1"></div>
+	</div>
+</div>
+{% endblock %}

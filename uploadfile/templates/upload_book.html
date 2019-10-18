@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+	<title></title>
+</head>
+<body>
+<h1>Upload Books</h1>
+<form method="POST" enctype="multipart/form-data">
+	{% csrf_token %}
+	{{form.as_p}}
+	<input type="submit" name="">
+</form>
+</body>
+</html>

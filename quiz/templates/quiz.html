@@ -1,0 +1,124 @@
+{% extends 'menu.html' %}
+{% block content %}
+{% load static %}
+    <script src="{% static 'quiz/jquery-1.10.2.min.js' %}"></script>
+        
+		<style>
+			body{
+                color:white;
+                background-image: url({% static 'images/quiz.jpg' %});
+                font-size: 18px;
+            }
+			.error {
+				color: #B94A48;
+			}
+			.form-horizontal {
+				margin-bottom: 0px;
+			}
+			.hide{display: none;}
+		</style>
+<div class="col-md-12 row" style="margin-top:80px;">
+    <div class="col-md-2">&nbsp;</div>
+        <div class="col-md-8 img-thumbnail" style="background-image: radial-gradient(grey,black);padding: 50px 10px;" >
+                <div class="question">
+                        <div class="col-xs-12 col-sm-8 col-md-8 col-xs-offset-4 col-sm-offset-3 col-md-offset-2">
+                            <h1>
+                                Quiz Test
+                            </h1>
+                            <hr>
+                            <form class="form-horizontal" role="form" id='login' method="post" action="{% url 'result' %}">
+                               {% csrf_token %}
+                                {% for quest in questions %}
+                                
+                                {% if forloop.counter == 1 %}         
+                                    <div id='question{{forloop.counter}}' class='cont'>
+                                        <h2 class='questions' id="qname{{forloop.counter}}" style="background-color:#686d6830;border-radius: 10px; padding: 10px 10px; color:white;">{{forloop.counter}}.{{quest.questions}}?
+                                        </h2>
+                                        <input type="radio" value="1" id='radio1_{{quest.id}}' name='{{quest.id}}'/>&nbsp;&nbsp;&nbsp;{{quest.choice1}}
+                                       <br/>
+                                        <input type="radio" value="2" id='radio1_{{quest.id}}' name='{{quest.id}}'/>&nbsp;&nbsp;&nbsp;{{quest.choice2}}
+                                        <br/>
+                                        <input type="radio" value="3" id='radio1_{{quest.id}}' name='{{quest.id}}'/>&nbsp;&nbsp;&nbsp;{{quest.choice3}}
+                                        <br/>
+                                        <input type="radio" value="4" id='radio1_{{quest.id}}' name='{{quest.id}}'/>&nbsp;&nbsp;&nbsp;{{quest.choice4}}
+                                        <br/>
+                                        <input type="radio" checked='checked' style='display:none' value="5" id='radio1_{{quest.id}}' name='{{quest.id}}'/>                                                                      
+                                        <br/> 
+                                        <button id='{{forloop.counter}}' class='next btn btn-success' type='button'>Next</button>
+                                    </div>     
+                                  
+                                {% elif forloop.counter < 1 or forloop.counter < count %}
+                                 
+                                   <div id='question{{forloop.counter}}' class='cont'>
+                                <h2 class='questions' id="qname{{forloop.counter}}" style="background-color:#686d6830;border-radius: 10px; padding: 10px 10px; color:white;">{{forloop.counter}}.{{quest.questions}}</h2>
+                                <input type="radio" value="1" id='radio1_{{quest.id}}' name='{{quest.id}}'/>&nbsp;&nbsp;&nbsp;{{quest.choice1}}
+                                <br/>
+                                <input type="radio" value="2" id='radio1_{{quest.id}}' name='{{quest.id}}'/>&nbsp;&nbsp;&nbsp;{{quest.choice2}}
+                                <br/>
+                                <input type="radio" value="3" id='radio1_{{quest.id}}' name='{{quest.id}}'/>&nbsp;&nbsp;&nbsp;{{quest.choice3}}
+                                <br/>
+                                <input type="radio" value="4" id='radio1_{{quest.id}}' name='{{quest.id}}'/>&nbsp;&nbsp;&nbsp;{{quest.choice4}}
+                                <br/>
+                                <input type="radio" checked='checked' style='display:none' value="5" id='radio1_{{quest.id}}' name='{{quest.id}}'/>                                                                      
+                                <br/>
+                                <button id='{{forloop.counter}}' class='previous btn btn-success' type='button'>Previous</button>                    
+                                <button id='{{forloop.counter}}' class='next btn btn-success' type='button' >Next</button>
+                                </div>
+                                   
+                                   
+                                   
+                                    
+                                    
+                               {% elif forloop.counter == count %}
+                                <div id='question{{forloop.counter}}' class='cont'>
+                                <h2 class='questions' id="qname{{forloop.counter}}" style="background-color:#686d6830;border-radius: 10px; padding: 10px 10px; color:white;">{{forloop.counter}}.{{quest.questions}}</h2>
+                                <input type="radio" value="1" id='radio1_{{quest.id}}' name='{{quest.id}}'/>&nbsp;&nbsp;&nbsp;{{quest.choice1}}
+                                <br/>
+                                <input type="radio" value="2" id='radio1_{{quest.id}}' name='{{quest.id}}'/>&nbsp;&nbsp;&nbsp;{{quest.choice2}}
+                                <br/>
+                                <input type="radio" value="3" id='radio1_{{quest.id}}' name='{{quest.id}}'/>&nbsp;&nbsp;&nbsp;{{quest.choice3}}
+                                <br/>
+                                <input type="radio" value="4" id='radio1_{{quest.id}}' name='{{quest.id}}'/>&nbsp;&nbsp;&nbsp;{{quest.choice4}}
+                                <br/>
+                                <input type="radio" checked='checked' style='display:none' value="5" id='radio1_{{quest.id}}' name='{{quest.id}}'/>                                                                      
+                                <br/>
+                                
+                                <button id='{{forloop.counter}}' class='previous btn btn-success' type='button'>Previous</button>                    
+                                <button id='{{forloop.counter}}' class='next btn btn-success' type='submit'>Finish</button>
+                                </div>
+                                
+                                 {% endif %}    
+                                {% endfor %} 
+                            </form>
+                        </div>
+        </div>
+    <div class="col-md-2">&nbsp;</div>
+</div>
+		
+		
+		<script>
+		$('.cont').addClass('hide');
+		count=$('.questions').length;
+        console.log(count);
+		 $('#question'+1).removeClass('hide');
+		 
+		 $(document).on('click','.next',function(){
+		     last=parseInt($(this).attr('id')); 
+             console.log(last);   
+		     nex=last+1;
+             console.log(nex);
+		     $('#question'+last).addClass('hide');
+		     
+		     $('#question'+nex).removeClass('hide');
+		 });
+		 
+		 $(document).on('click','.previous',function(){
+             last=parseInt($(this).attr('id'));     
+             pre=last-1;
+             $('#question'+last).addClass('hide');
+             
+             $('#question'+pre).removeClass('hide');
+         }); 
+		</script>
+	
+{% endblock %}

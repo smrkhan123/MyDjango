@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+<link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
+<link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Lato:300" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <style type="text/css">
+  	.navbar
+  	{
+  		background-color: dodgerblue ;
+  		box-shadow: 0px 10px 15px black;
+  		border:none;
+  		border-bottom: 2px solid black;
+  	}
+  	body
+  	{
+	 font-family: "Century Gothic"; 		
+   background-image: url('/static/b1.jpg');
+   background-size:cover;
+   overflow-x: hidden;
+
+  	}
+  	a
+  	{
+  		color: white !important;
+  	}
+    li,.help-block
+    {
+      color: white !important;
+    }
+  	button	
+  	{
+  		color: white !important;
+  		background: black !important;
+  	}
+  	a:hover
+  	{
+  		background-color: black !important;
+  		color:white; 
+  		transition: 0.6s !important;
+  	}
+  	.active a
+  	{
+  		background-color: black !important;
+  		color:white; 
+  		transition: 0.6s !important;
+  	}
+  	html
+  	{
+  		scroll-behavior: smooth;
+      min-height: 100vh;
+  	}
+    .mcontainer {
+  width: 96% !important;
+  height: 400px !important;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  background-color: black;
+  background-size: cover;
+  cursor: pointer;
+  -webkit-box-shadow: 0 0 5px #000;
+  box-shadow: 0 0 5px #000;
+}
+#ccc:hover
+{
+background-color: transparent !important;
+}
+.moverlay {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 2fr 2fr 1fr;
+  background: rgba(77, 77, 77, 0.9);
+  color: #FEF5DF;
+  opacity: 0;
+  transition: all 0.5s;
+  font-family: 'Playfair Display', serif;
+}
+
+.mitems {
+  padding-left: 20px;
+  letter-spacing: 3px;
+}
+
+.mhead {
+  font-size: 30px;
+  line-height: 40px;
+  transform: translateY(40px);
+  transition: all 0.7s;
+}
+.mhead hr {
+  display: block;
+  width: 0;
+  border: none;
+  border-bottom: solid 2px #FEF5DF;
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+  transition: all .5s;
+}
+
+.mprice {
+  font-size: 22px;
+  line-height: 10px;
+  font-weight: bold;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.7s;
+}
+.mprice .mold {
+  text-decoration: line-through;
+  color: #b3b3b3;
+}
+
+.mcart {
+  font-size: 12px;
+  opacity: 0;
+  letter-spacing: 1px;
+  font-family: 'Lato', sans-serif;
+  transform: translateY(40px);
+  transition: all 0.7s;
+}
+.mcart i {
+  font-size: 16px;
+}
+.mcart span {
+  margin-left: 10px;
+}
+
+.mcontainer:hover .moverlay {
+  opacity: 1;
+}
+.mcontainer:hover .moverlay .mhead {
+  transform: translateY(0px);
+}
+.mcontainer:hover .moverlay hr {
+  width: 75px;
+  transition-delay: 0.4s;
+}
+.mcontainer:hover .moverlay .mprice {
+  transform: translateY(0px);
+  transition-delay: 0.3s;
+  opacity: 1;
+}
+.mcontainer:hover .moverlay .mcart {
+  transform: translateY(0px);
+  transition-delay: 0.6s;
+  opacity: 1;
+}
+  </style>
+
+  </head>
+<body data-spy="scroll" data-target=".navbar">
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<a href="" class="navbar-brand" style="font-family:chiller !important;font-size:30px;">Mobile Mart</a>
+				<button class="navbar-toggle" data-toggle="collapse" data-target="#mydiv">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse" id="mydiv">
+			
+        {% if user.is_superuser %}
+
+      	<ul class="nav navbar-nav">
+					
+          <li><a href="{% url 'home' %}">Home</a></li>
+					<li class="dropdown">
+						<a href="" class="dropdown-toggle" type="button" data-toggle="dropdown">Customer
+  <span class="caret"></span></a>
+  <ul class="dropdown-menu" style="background-color: dodgerblue;">
+    <li><a href="{% url 'addcus' %}">Add Customer</a></li>
+    <li><a href="{% url 'cuslist' %}">Customers List</a></li>
+  </ul>
+												</li>
+					<li class="dropdown">
+						<a href="" class="dropdown-toggle" type="button" data-toggle="dropdown">Mobiles
+  <span class="caret"></span></a>
+  <ul class="dropdown-menu" style="background-color: dodgerblue;">
+    <li><a href="{% url 'addcom' %}">Add Company</a></li>
+    <li><a href="{% url 'addmob' %}">Add Mobile</a></li>
+    <li><a href="{% url 'moblist' %}">Mobile Details</a></li>
+    <li><a href="{% url 'filmob' %}">Filter Mobiles</a></li>
+  </ul>
+												</li>
+					<li><a href="">Search Bill</a></li>
+					<li><a href="">All Transactions</a></li>
+				</ul>			
+
+        {% elif user.is_authenticated %}
+        <ul class="nav navbar-nav">
+          
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="">About</a></li>
+          <li><a href="">Contact</a></li>
+          <li><a href="{% url 'cfilmob' %}">Search Mobiles</a></li>
+          
+          
+        </ul>     
+        <ul class="nav navbar-nav navbar-right">
+          
+          <li><a href="{% url 'cusdetail' u=user %}">Profile</a></li>
+          <li><a href="{% url 'viewcart' %}">View Cart</a></li>
+          
+          
+        </ul>     
+
+
+        {% else %}
+        <ul class="nav navbar-nav">
+          
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="">About</a></li>
+          <li><a href="">Contact</a></li>
+          <li><a href="{% url 'cfilmob' %}">Search Mobiles</a></li>
+          
+          
+        </ul>     
+      {% endif %}  
+
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown">
+						<a href="" class="dropdown-toggle" type="button" data-toggle="dropdown">Accounts
+  <span class="caret"></span></a>
+  <ul class="dropdown-menu" style="background-color: dodgerblue;">
+    <li>
+
+    {% if not user.is_authenticated %}
+      <a href="{% url 'login' %}">Login</a></li>
+					<li><a href="{% url 'signup' %}">SignUp</a></li>
+		{% else %}
+    			<li><a href="{% url 'logout' %}">Logout</a></li>
+    
+					
+    </ul>
+  				<li><a href="{% url 'editpro' %}">Welcome {{user}}..!!</a></li>
+{% endif %}
+				</ul>
+			</div>
+
+		</div>
+	</nav>
+
+{% block content %}
+	<section id="sec1" class="container-fluid" style="background-image: url('/static/b1.jpg');background-size:cover;height: 100vh;box-shadow:0px 10px 20px black;">
+		
+		<div class="jumbotron" style="position: relative;top: 100px;background-color: rgba(0,0,0,0.4);border:2px solid white;color: white;" data-aos="fade-right">
+      {% if messages %}
+    {% for i in messages %}
+      <div class="alert alert-success alert-dismissible" style="position: relative;">
+        <a href="#" class="close" data-dismiss="alert">&times;</a>
+      {{i}}</div>
+    {% endfor %}
+  {% endif %}
+			<h1 style="font-family:chiller;font-size: 150px;text-align: center;">Mobile Mart</h1>
+			<h1 style="text-align: center;">Your NeighBourHood Online Mobile Shop...</h1>
+			<p style="text-align: center;">Lets Drive to Mart..</p>
+		</div>
+
+	</section>
+
+{% endblock %}
+<script>
+  AOS.init({
+  	duration:2000,
+  });
+</script>
+</body>
+</html>

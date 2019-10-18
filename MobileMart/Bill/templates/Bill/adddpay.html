@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+	<div data-aos="fade-right" class="col-sm-12 col-md-6 col-md-offset-3" style="box-shadow: 0px 10px 15px black;opacity: 0.9;">
+            <div class="panel panel-default">
+                <div class="panel-body" style="padding:40px;">
+                    <h3>Secure Payment</h3>
+                    
+                    <form class="form-horizontal" action="" method="POST">
+                    	{% csrf_token %}
+                        <div class="form-group">
+                        	<label>Card No. : </label>
+                        	<input type="number" name="card" minlength="16" maxlength="16" required class="form-control" placeholder="Enter Card No.">
+                        </div>
+                        <div class="form-group">
+                        	<label>Card Holder Name : </label>
+                        	<input type="text" name="hold" required class="form-control" placeholder="Enter Card Holder Name .">
+                        </div>
+                        <div class="form-group">
+                        	<label>Expiry : </label>
+                        	<br>
+                        	<div class="col-lg-6">
+                        	<input type="number" name="date" required class=" form-control" placeholder="eg : 14 (Date)">
+                        	</div>
+                        	<div class="col-lg-6">
+                        	<input type="number" name="month" required class="form-control" placeholder="eg : 04 (for April)">
+                        	</div>
+                        </div>
+                        <div class="form-group">
+                        	<label>CVV : </label>
+                        	<input type="password" name="cvv" pattern="\b\d{3}\b" required title="Enter 3 digit No." class="col-lg-6 form-control" placeholder="Enter CVV No.">
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-10 col-sm-10">
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+               
+            </div>
+        </div>
+{% endblock %}

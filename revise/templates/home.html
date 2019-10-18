@@ -1,0 +1,16 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home</title>
+</head>
+<body>
+<img src="{% static 'd.jpg' %}" height="300" width="1340">
+<h1>Hello I am Home...</h1>
+<a href="{% url 'about' %}">About</a>
+<a href="{% url 'create' %}">Create Post</a>
+{% for i in data %}
+<h1>{{i}}</h1>
+{% endfor %}
+</body>
+</html>

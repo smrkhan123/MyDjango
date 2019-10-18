@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load bootstrap3 %}
+
+	<section id="sec1" class="container-fluid" style="background-image: url('/static/d.jpg');background-size:cover;height: 100vh;box-shadow:0px 10px 20px black;">
+		
+		<div class="jumbotron" style="position: relative;top: 100px;min-height:73vh;background-color: rgba(0,0,0,0.4);border:2px solid white;color: white;" data-aos="fade-in">
+			<form method="POST" action="{% url 'addmob' %}" enctype="multipart/form-data">
+				{% csrf_token %}
+				<div class="form-group">
+					<label>Mobile : </label>
+					<select name="mob" class="form-control">
+						{% for i in m %}	
+						<option>{{i.0}}</option>
+						{% endfor %}
+					</select>
+				</div>
+				<div class="form-group">
+					<label>Model : </label>
+					<input type="text" name="mod" class="form-control">
+				</div>
+				<div class="form-group">
+					<label>Price : </label>
+					<input type="number" name="pri" class="form-control">
+				</div>
+				<div class="form-group">
+					<label>Quantity : </label>
+					<input type="number" name="qua" class="form-control">
+				</div>
+				<div class="form-group">
+					<label>Charger : </label>
+					<label class="radio-inline"><input type="radio" name="cha" value="Yes">Yes</label>
+					
+					<label class="radio-inline"><input type="radio" name="cha" value="No">No</label>	
+				</div>
+				<div class="form-group">
+					<label>Battery : </label>
+					<label class="radio-inline"><input type="radio" name="bat" value="Yes">Yes</label>
+					
+					<label class="radio-inline"><input type="radio" name="bat" value="No">No</label>	
+				</div>
+				<div class="form-group">
+					<label>Headset : </label>
+					<label class="radio-inline"><input type="radio" name="hea" value="Yes">Yes</label>
+					
+					<label class="radio-inline"><input type="radio" name="hea" value="No">No</label>	
+				</div>
+				<div class="form-group">
+					<label>Memory : </label>
+					<label class="radio-inline"><input type="radio" name="mem" value="Yes">Yes</label>
+					
+					<label class="radio-inline"><input type="radio" name="mem" value="No">No</label>	
+				</div>
+				<div class="form-group">
+					<label>Data Cable : </label>
+					<label class="radio-inline"><input type="radio" name="dat" value="Yes">Yes</label>
+					
+					<label class="radio-inline"><input type="radio" name="dat" value="No">No</label>	
+				</div>
+				<div class="form-group">
+					<label>Image : </label>
+					<input type="file" name="ima" class="form-control">
+				</div>
+				<div class="form-group">
+					<label>Description : </label>
+					<textarea name="des" class="form-control" rows="5"></textarea>
+				</div>				
+				<div class="form-group">
+					<input type="submit" value="Add" class="btn btn-default">
+				</div>
+			</form>
+		</div>
+
+	</section>
+{% endblock %}

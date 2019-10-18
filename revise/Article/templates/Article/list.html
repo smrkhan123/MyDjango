@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hello</title>
+</head>
+<body>
+<h1>My Name is List...</h1>
+{% for i in data %}
+<h1><a href="{% url 'detail' pk=i.id %}">{{i.title}}</a></h1>
+{% endfor %}
+</body>
+</html>

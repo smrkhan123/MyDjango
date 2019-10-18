@@ -1,0 +1,60 @@
+{% extends 'menu.html' %}
+{% load static %}
+{% block content %}
+<style type="text/css">
+	body{
+		background-image:url({% static 'images/c.jpeg' %});
+	}
+	.jumbotron{
+		background-color: rgba(0,0,0,0.5);
+	}
+</style>
+<div class="container-fluid" id='main'>
+	<div class="container jumbotron" id='abc' data-aos="fade-down">
+		<div class="col-md-3"></div>
+		<div class="col-md-6">
+			<form method="POST">
+				{% for message in messages %}
+				<div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					{{ message }}
+				</div>
+				{% endfor %}
+				{% csrf_token %}
+				<div class="container abc">
+					<h2 style="margin-bottom: 40px;">
+						<i class="fa fa-user-plus" style="font-size: 30px;"></i> Update Account
+					</h2>
+					{% if i %}
+							<div class="form-group col-md-5 col-sm-5" style="padding: 5px 0px;">
+								<label for='firstname'>First Name:</label>
+								<input type="text" class='form-control' name="fname" value="{{i.first_name}}">
+							</div>
+							<div class="col-md-1 col-sm-1"></div>
+							<div class="form-group col-md-5 col-sm-5" style="padding: 5px 0px">
+								<label for='lastname'>Last Name:</label>
+								<input type="text" class='form-control' name="lname" value="{{i.last_name}}">
+							</div>
+							<div class="form-group col-md-11 col-sm-11" style="padding: 5px 0px;">
+								<label for='username'>Username:</label>
+								<input type="text" class='form-control' name="username" value="{{i.username}}">
+							</div>
+							<div class="form-group col-md-11 col-sm-11" style="padding: 5px 0px;">
+								<label for='email'>Email:</label>
+								<input type="text" class='form-control' name="email" value="{{i.email}}">
+							</div>
+							<div class="form-group" style="margin:20px 0px;">
+								<input type="submit" class="btn btn-primary" value="Update" style="padding: 10px 50px;">
+							</div>
+
+							{% endif %}
+							
+				</div>
+			</form>
+			<div>
+			<div class="col-md-3"></div>
+	</div>
+</div>
+{% endblock %}

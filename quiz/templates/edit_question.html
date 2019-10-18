@@ -1,0 +1,64 @@
+{% extends 'menu.html' %}
+{% block content %}
+<div class="container">
+	<center><h1 class="my-4">Edit Question</h1></center>
+
+	<div class="col-md-3"></div>
+	<div class="col-md-6">
+	{% for message in messages %}
+	<div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					{{ message }}
+				</div>
+	{% endfor %}
+	<form method="POST" action="">
+		{% csrf_token %}
+		{% if i %}
+		<div class="form-group">
+			<label for="Questions">Question:</label>
+			<input type="text" name="question" class="form-control" value="{{i.questions}}">
+		</div>
+		<div class="row">
+			<div class="form-group col-md-6">
+				<label for="Options">Option 1:</label>
+				<input type="text" name="option1" class="form-control" value="{{i.choice1}}">
+			</div>
+			<div class="form-group col-md-6">
+				<label for="Options">Option 2:</label>
+				<input type="text" name="option2" class="form-control" value="{{i.choice2}}">
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group col-md-6">
+				<label for="Options">Option 3:</label>
+				<input type="text" name="option3" class="form-control" value="{{i.choice3}}">
+			</div>
+			<div class="form-group col-md-6">
+				<label for="Options">Option 4:</label>
+				<input type="text" name="option4" class="form-control" value="{{i.choice4}}">
+			</div>
+		</div>
+		<div class="form-group">
+				<label for="Options">Right Answer</label>
+				<p>{{i.correct_answer}}</p>
+				<select class="form-control" name='right_answer'>
+					<option value="">Select Option</option>
+					<option value="1" {% if i.correct_answer == '1' %} selected {% endif %}>Choice1</option>
+					<option value="2" {% if i.correct_answer == '2' %} selected {% endif %}>Choice2</option>
+					<option value="3" {% if i.correct_answer == '3' %} selected {% endif %}>Choice3</option>
+					<option value="4" {% if i.correct_answer == '4' %} selected {% endif %}>Choice4</option>
+				</select>
+		</div>
+		<div class="row">
+			<div class="form-group col-md-3">
+					<button type="submit" class="btn btn-info">Update Questions</button>
+			</div>
+		</div>
+	</form>
+	{% endif %}
+	</div>
+	<div class="col-md-3"></div>
+</div>
+{% endblock %}

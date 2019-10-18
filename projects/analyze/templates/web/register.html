@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<center>
+<div style="background-color: grey; padding: 50px;">
+	<h1>Registration Form</h1>
+	<form action="" method="POST">
+		{% csrf_token %}
+		<table>
+		<tr>
+			<td style="padding: 10px 0px;">firstname: </td>
+			<td><input type="text" name="f_name"></td>
+		</tr>
+		<tr>
+			<td style="padding: 10px 0px;">lastname: </td>
+			<td> <input type="text" name="l_name"></td>
+		</tr>
+		<tr>
+			<td style="padding: 10px 0px;">Email: </td><td> <input type="email" name="email"></td></tr>
+		<tr>
+			<td style="padding: 10px 0px;">Password: </td>
+			<td> <input type="password" name="pass"></td>
+		</tr>
+		</table>
+		<br>
+		<input type="submit" name="submit"><br><br>
+
+		Already have an Account? <a href="{% url 'login' %}">Login</a>
+	</form>
+</div>
+</center>	
+</body>
+</html>

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load bootstrap3 %}
+
+	<section id="sec1" class="container-fluid" style="background-image: url('/static/d.jpg');background-size:cover;height: 100vh;box-shadow:0px 10px 20px black;">
+		
+		<div class="jumbotron" style="position: relative;top: 100px;min-height:73vh;background-color: rgba(0,0,0,0.4);border:2px solid white;color: white;" data-aos="flip-up">
+			<div class="col-lg-6" style="background-image: url('{{data.9}}');background-size: contain;min-height:55vh;margin-right: 20px;background-repeat: no-repeat;">
+				
+			</div>
+			
+			<h1>Mobile : <b>{{data.0}}</b></h1>
+			<p>Model : <b>{{data.1}}</b></p>
+			<p>Price : <b>{{data.2}}</b></p>
+			<p>Quantity : <b>{{data.3}}</b></p>
+			<p>Charger : <b>{{data.4}}</b></p>
+			<p>Battery : <b>{{data.5}}</b></p>
+			<p>Headset : <b>{{data.6}}</b></p>
+			<p>Memory : <b>{{data.7}}</b></p>
+			<p>DataCable : <b>{{data.8}}</b></p>
+			<p>Description : <b>{{data.10}}</b></p>
+		</div>
+
+	</section>
+{% endblock %}

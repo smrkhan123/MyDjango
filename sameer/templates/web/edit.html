@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<form method="POST" enctype="multipart/form-data">
+	{% csrf_token %}
+	Name: <input type="text" name="name" value="{{a.name}}"><br><br>
+	{% if a.img %}
+	Current Image: <a href="{{dest.img.url}}">{{a.img.url}}</a><br><br>
+	{% endif %}
+	Change Image:<input type="file" name="document"><br><br>
+	Description: <textarea name="desc">{{a.desc}}</textarea><br><br>
+	Price: <input type="text" name="price" value="{{a.price}}"><br><br>
+	Offer: <input type="checkbox" name="offer"><br><br>
+	<input type="submit" name="submit">
+</form>
+</body>
+</html>

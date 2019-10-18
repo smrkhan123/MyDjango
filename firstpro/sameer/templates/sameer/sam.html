@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Demo</title>
+	<style type="text/css">
+	body{
+		background-color:dodgerblue;
+		color:white;
+	}
+
+	</style>
+</head>
+<body>
+<center>
+	<h1>Hello I am home...</h1>
+	<img src="{% static 'e.jpg' %}" style="width:500px; width:500px;">
+	<br>
+	{% for i in data %}
+	<h1>{{i}}</h1>
+	{% endfor %}
+</center>
+</body>
+</body>
+</html>

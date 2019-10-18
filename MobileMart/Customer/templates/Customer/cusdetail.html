@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load bootstrap3 %}
+
+	<section id="sec1" class="container-fluid" style="background-image: url('/static/d.jpg');background-size:cover;height: 100vh;box-shadow:0px 10px 20px black;">
+		
+		<div class="jumbotron" style="position: relative;top: 100px;min-height:73vh;background-color: rgba(0,0,0,0.4);border:2px solid white;color: white;" data-aos="flip-up">
+			<div class="col-lg-6" style="background-image: url({{data.7}});background-size: cover;min-height:55vh;margin-right: 20px;">
+				
+			</div>
+			
+			<h1>Username : {{data.0}}</h1>
+			<p>First Name : {{data.1}}</p>
+			<p>Last Name : {{data.2}}</p>
+			<p>Email : {{data.3}}</p>
+			<p>Mobile : {{data.4}}</p>
+			<p>Aadhar : {{data.5}}</p>
+			<address>Address : {{data.6}}</address>
+		</div>
+
+	</section>
+{% endblock %}

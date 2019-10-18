@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<h1>Books List</h1>
+<table>
+	<a href="{% url 'upload_book' %}">Upload Book</a>
+	<tr>
+		<th>Title</th>
+		<th>Author</th>
+		<th>Pdf</th>
+		<th>Cover</th>
+	</tr>
+	<br>
+	{% for book in books %}
+	<tr>
+		<td>{{book.title}}</td>
+		<td>{{book.author}}</td>
+		<td><a href="{{book.pdf.url}}">{{book.pdf}}</a></td>
+		<td>
+			{% if book.cover %}
+			<a href="{{book.cover.url}}">
+			<img src="{{book.cover.url}}" style="width: 100px;height: 100px;"></a>
+			{% else %}
+				No Cover
+			{% endif %}
+		</a></td>
+		
+	</tr>
+	{% endfor %}
+</table>
+</body>
+</html>

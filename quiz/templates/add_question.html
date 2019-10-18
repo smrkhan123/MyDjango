@@ -1,0 +1,61 @@
+{% extends 'menu.html' %}
+{% block content %}
+<div class="container">
+	<center><h1 class="my-4">Add Questions</h1></center>
+
+	<div class="col-md-3"></div>
+	<div class="col-md-6">
+	{% for message in messages %}
+	<div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					{{ message }}
+				</div>
+	{% endfor %}
+	<form method="POST" action="{% url 'add_question' %}">
+		{% csrf_token %}
+		<div class="form-group">
+			<label for="Questions">Question:</label>
+			<input type="text" name="question" class="form-control">
+		</div>
+		<div class="row">
+			<div class="form-group col-md-6">
+				<label for="Options">Option 1:</label>
+				<input type="text" name="option1" class="form-control">
+			</div>
+			<div class="form-group col-md-6">
+				<label for="Options">Option 2:</label>
+				<input type="text" name="option2" class="form-control">
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group col-md-6">
+				<label for="Options">Option 3:</label>
+				<input type="text" name="option3" class="form-control">
+			</div>
+			<div class="form-group col-md-6">
+				<label for="Options">Option 4:</label>
+				<input type="text" name="option4" class="form-control">
+			</div>
+		</div>
+		<div class="form-group">
+				<label for="Options">Right Answer</label>
+				<select class="form-control" name='right_answer'>
+					<option value="">Select Option</option>
+					<option value="1">Choice 1</option>
+					<option value="2">Choice 2</option>
+					<option value="3">Choice 3</option>
+					<option value="4">Choice 4</option>
+				</select>
+		</div>
+		<div class="row">
+			<div class="form-group col-md-3">
+					<button type="submit" class="btn btn-info">Add Questions</button>
+			</div>
+		</div>
+	</form>
+	</div>
+	<div class="col-md-3"></div>
+</div>
+{% endblock %}

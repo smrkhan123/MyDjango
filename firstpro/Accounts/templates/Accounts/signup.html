@@ -1,0 +1,123 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style type="text/css">
+	body{
+		margin: 0;
+		padding: 0;
+		font-family:century gothic;
+	}
+	a{
+		color:white;
+	}
+	span{
+		background-color: white;
+	}
+	#abc{
+		font-size: 25px;
+	}
+	#abc:hover{
+		color:white;
+		background-color: black;
+	}
+	#a:active{
+		background-color: black;
+	}
+	#main{
+		width:100%;
+		background-size:cover;
+		padding-bottom:250px;
+		background-image:url(/static/d.jpg);
+		background-repeat: no-repeat;
+	}
+	#jum{
+		position: relative;
+		top:100px;
+		background-color: rgba(0,0,0,0); 
+		color:white; 
+	}
+	</style>
+</head>
+<body>
+<div class="container-fluid" id="main">
+	
+	<div class="container jumbotron" id="jum" data-aos="fade-down">
+		<div class="col-md-1 col-lg-1 col-sm-1"></div>
+		<div class="col-md-10 col-lg-10 col-sm-10">
+			<div style="background-color:rgba(0,0,0,0.6);">
+				<h2 style="margin-bottom: 20px;text-align: center;padding-top: 50px;"><i class="fa fa-user-plus" style="margin-right: 8px;"></i>Sign Up Here</h2>
+				<h5 style="color:yellow; text-align: center;">Already have account? <a href="{% url 'login' %}"> Click Here</a></h5>
+				<div class="container">
+					<form action="" style="margin: 10px 50px;">
+						<div class="form-group" style="margin-bottom: 20px;">
+							<label for=username>Username: </label>
+							<input type="text" class="form-control" name="">
+						</div>
+						<div class="form-group" style="margin-bottom: 20px;">
+							<label for=username>Full Name: </label>
+							<input type="text" class="form-control" name="">
+						</div>
+						<div class="form-group" style="margin-bottom: 20px;">
+							<label for=username>Email: </label>
+							<input type="text" class="form-control" name="">
+						</div>
+						<div class="form-group" style="margin-bottom: 20px;">
+							<label for=username>Phone Number: </label>
+							<input type="text" class="form-control" name="">
+						</div>
+						<div class="form-group" style="margin-bottom: 20px;">
+							<label for=pwd>Password: </label>
+							<input type="password" class="form-control" name="">
+						</div>
+						<div class="form-group" style="margin-bottom: 20px;">
+							<label for=pwd>Confirm Password: </label>
+							<input type="password" class="form-control" name="">
+						</div>
+						<div class="form-group" style="margin-top: 30px;">
+							<center>
+							<input type="submit" class="btn" name="signup" value="Sign Up" style="padding:10px 40px; text-align: center; background-color: blue;">
+							</center>
+						</div>
+					</form>
+				</div>
+				<div class="col-md-1 col-lg-1 col-sm-1"></div>
+			<h2 style="margin-bottom: 20px; text-align: center; font-size: 16px; padding: 10px;">
+					You can login using various Social Media Platforms
+					<br><br><br>
+					<div class="col-md-6 col-sm-6 col-lg-6">
+					<button style="background-color: blue; margin-bottom: 20px;" class="btn"><i class="fa fa-facebook" style="margin-right: 8px;"></i> Login With Facebook</button>
+					</div>
+					<div class="col-md-6 col-sm-6 col-lg-6">
+					<button style="background-color: dodgerblue; margin-bottom: 20px;" class="btn"><i class="fa fa-twitter" style="margin-right: 8px;"></i> Login With Twiiter</button>
+					</div>
+					<button style="background-color: red;" class="btn"><i class="fa fa-google" style="margin-right: 8px;"></i> Login With Google</button>
+				</h2>
+
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<script>
+  AOS.init({
+  	duration:2000,
+  });
+</script>
+
+
+
+
+
+</body>
+</html>

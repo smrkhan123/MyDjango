@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+	</style>
+</head>
+<body>
+<form method="POST" enctype="multipart/form-data">
+	{% csrf_token %}
+	<h1>UPDATE</h1>
+	<table>
+	<tr>
+		<th style="border:1px solid black">Name:</th>
+		<th style="border:1px solid black">Description:</th>
+		<th style="border:1px solid black">Current Image:</th> 
+		<th style="border:1px solid black">Update Image:</th>
+		<th style="border:1px solid black">Price:</th>
+	</tr>
+	<tr>
+	<td style="border:1px solid black"><input type="text" name="name" value="{{dests.name}}"></td>
+	<td style="border:1px solid black"><textarea name="desc">{{dests.desc}}</textarea></td>
+	<td style="border:1px solid black"><a href="{{dests.img.url}}">{{dests.img.url}}</a></p></td>
+	<td style="border:1px solid black"><input type="file" name="image" value="{{dests.img.url}}"></td>
+	<td style="border:1px solid black"><input type="text" name="price" value="{{dests.price}}"></td>
+	</tr>
+	</table>
+	<input type="submit" name="submit">
+</form>
+</body>
+</html>
